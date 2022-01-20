@@ -13,18 +13,19 @@ print(my_list)
 
 def sum_list_1(dataset: list) -> int:
     new_list = []
+    result = 0
     i = 0
     while i < len(dataset):
         n = int(dataset[i])
-        suma = 0
+        nbr = 0
         while n > 0:
             digit = n % 10
-            suma = suma + digit
+            nbr = nbr + digit
             n = n // 10
-        if suma % 7 == 0:
+        if nbr % 7 == 0:
             new_list.append(dataset[i])
         i += 1
-    result = new_list
+    result= sum(new_list[0:len(new_list)])
     return result
 
 result_1 = sum_list_1(my_list)
