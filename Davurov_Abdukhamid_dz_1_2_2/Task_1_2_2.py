@@ -13,7 +13,6 @@ print(my_list)
 
 def sum_list_1(dataset: list) -> int:
     new_list = []
-    result = 0
     i = 0
     while i < len(dataset):
         n = int(dataset[i])
