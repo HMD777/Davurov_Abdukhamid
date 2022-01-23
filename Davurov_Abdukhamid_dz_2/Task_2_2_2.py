@@ -2,10 +2,12 @@ def convert_list_in_str(list_in: list) -> str:
     task_new = []
     for i in list_in:
         if not i.isalpha():
-            task_new.append(f'"{i}"')
+            if i.isdigit():
+                task_new.append(f'"{i.zfill(2)}"')
+            if i[0] in ['+', '-']:
+                task_new.append(f'"{i[0]}{i[1:].zfill(2)}"')
         else:
             task_new.append(i)
-
     str_out = " ".join(task_new)
     return str_out
 

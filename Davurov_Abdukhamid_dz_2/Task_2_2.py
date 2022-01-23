@@ -1,17 +1,27 @@
 task = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
 print(task)
-task_new = []
-task_nbr=0
 
-for i in task:
+def convert_list_in_str(list_in: list) -> str:
+    task_new = []
+    for i in list_in:
+        if not i.isalpha():
+            if i.isdigit():
+                task_new.append('"')
+                task_new.append(i.zfill(2))
+                task_new.append('"')
+            if i[0] in ['+', '-']:
+                task_new.append('"')
+                task_new.append(f'{i[0]}{i[1:].zfill(2)}')
+                task_new.append('"')
+        else:
+            task_new.append(i)
 
-    if not i.isalpha():
-        task_new.append('"')
-        task_new.append(i)
-        task_new.append('"')
-
-    else:
-        task_new.append(i)
+    str_out = task_new
+    return str_out
 
 
-print(task_new)
+my_list = ['в', '5', 'часов', '17', 'минут', 'температура', 'воздуха', 'была', '+5', 'градусов']
+result = convert_list_in_str(my_list)
+print(result)
+
+#['в', '"', '05', '"', 'часов', '"', '17', '"', 'минут', 'температура', 'воздуха', 'была', '"', '+05', '"', 'градусов']
