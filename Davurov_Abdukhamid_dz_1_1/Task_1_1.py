@@ -1,7 +1,7 @@
 
 
 
-sec_in_day = 84600  # 84600 sec in 1 day
+sec_in_day = 86400  # 84600 sec in 1 day
 sec_in_hour = 3600  # 3600 sec in 1 hour
 sec_in_min = 60     # 60 sec in 1 min
 
@@ -12,14 +12,14 @@ def convert_time(duration: int) -> str:
     min_result = 0
     sec_result = 0
     while duration >= sec_in_day:
-        duration -= sec_in_day
-        day_result += 1
-    while duration >= sec_in_hour: # Почемуто не правильно считает при условии когда duration превышает 1 дня расчеты на 1-2 этерации больше
-        duration -= sec_in_hour
-        hour_result += 1
+        day_result = duration // sec_in_day
+        duration = duration-(day_result*sec_in_day)
+    while duration >= sec_in_hour:
+        hour_result =duration//sec_in_hour
+        duration = duration-(hour_result*sec_in_hour)
     while duration >= sec_in_min:
-        duration -= sec_in_min
-        min_result += 1
+        min_result = duration // sec_in_min
+        duration = duration-(min_result*sec_in_min)
     while (duration > 0):
         duration -= 1
         sec_result += 1
