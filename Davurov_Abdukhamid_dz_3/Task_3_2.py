@@ -13,6 +13,7 @@ dict_one_to_ten = {
 }
 
 
+
 def num_translate_adv(value: str) -> str:
     cond_uc = bool
     if str.isupper(value[0]) is True:
